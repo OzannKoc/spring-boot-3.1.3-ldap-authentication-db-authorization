@@ -27,6 +27,7 @@ public class LdapProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String email = authentication.getName();
         String password = authentication.getCredentials().toString();
+        // need check from ldapStore or your own ldap server
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("USER"));
         return new UsernamePasswordAuthenticationToken(email,password,roles);
